@@ -1,25 +1,21 @@
 #include "mbed.h"
 #include "protocol.h"
 
-// #include <string>
-// #include <cstring>
 using namespace std;
-Thread thread;
 
 #define TX D8 // transmit pin name
 #define RX D2 // recieve pin name
 #define EN D3 // enable pin name
 
 const float
-Y = 30,
-L = 20.8,
-OFFSET1 = 10,
-OFFSET2 = 20.5,
-PI = atan(1.f) * 4.f;
+    Y = 30,
+    L = 20.8,
+    OFFSET1 = 10,
+    OFFSET2 = 20.5,
+    PI = atan(1.f) * 4.f;
 
-//#define comp(str) (!strcmp(mode.c_str(), str))
 #define delay_us wait_us(M1.delay + M2.delay)
-
+//#define comp(str) (!strcmp(mode.c_str(), str))
 //void communication();
 void goto_xy(float, float);
 
@@ -35,10 +31,10 @@ DigitalOut led(LED1);
 int main(){
     int i = 0;
     printf("===================program on====================\n");
-    //M1.read_encoder();
-    //M2.read_encoder();
+    M1.read_encoder();
+    M2.read_encoder();
     M1.init_zero(19);
-    M2.init_zero(-23);
+    M2.init_zero(-24);
     M1.PC1(0);
     M2.PC1(0);
     delay_us;
@@ -46,10 +42,17 @@ int main(){
     led = 1;
     
     while(true){
-        goto_xy(0, i * 10);
-        goto_xy(15, i * 10);
-        goto_xy(30, i * 10);
-        if(!b1) i = (i+1) % 2;
+        goto_xy(0,  0);
+        while(b1);
+        goto_xy(15, 0);
+        while(b1);
+        goto_xy(30, 0);
+        while(b1);
+        goto_xy(0,  10);
+        while(b1);
+        goto_xy(15, 10);
+        while(b1);
+        goto_xy(30, 10);
     }
 }
 
