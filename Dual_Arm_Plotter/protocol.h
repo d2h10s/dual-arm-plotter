@@ -22,7 +22,7 @@ private:
         int cs = 0;
         for(int i = 0; i < len; i++)
             cs += *(data + i + pos);
-        return cs & 0xFF; 
+        return cs & 0xFF;
     }
     
     // Set Data
@@ -69,10 +69,7 @@ private:
 public:
     float delay;
     DM50(uint8_t id, PinName TX, PinName RX , PinName enb)
-    : ID(id), RS485(TX, RX, 115200),pc(USBTX, USBRX, 115200), enable(enb), my_position(0)
-    {
-        
-    }
+    : ID(id), RS485(TX, RX, 115200),pc(USBTX, USBRX, 115200), enable(enb), my_position(0) { }
 
     // initiate initial position
     void init_zero(float data){
@@ -103,8 +100,6 @@ public:
         }
         else
             pc.printf("Motor %d :: RS485 read is failed\n", ID);
-
-        
     }
     // Open Loop: power [-850, 850], it moves at least power 100
     void OL(int32_t power){ //====================================================================================================
