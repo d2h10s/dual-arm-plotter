@@ -1,5 +1,3 @@
-# 3DOF_manupulator_simulation
-
 # Dual_Arm_Plotter
 ## Brief
 이 프로젝트는 Palleral Scara Robot을 간단한 기구학만으로 구현한 것입니다.  
